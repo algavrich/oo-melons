@@ -3,6 +3,9 @@
 import random
 from datetime import datetime
 
+class TooManyMelonsError(ValueError):
+    pass
+
 class AbstractMelonOrder:
     """An abstract base class that other Melon Orders inherit from."""
 
@@ -20,8 +23,11 @@ class AbstractMelonOrder:
         # shipped we set a default val for, so no
         # need to pass in as argument
         self.species = species
+        if qty > 100:
+            raise TooManyMelonsError("No more than 100 melons!")
         self.qty = qty
         self.shipped = False
+
 
     def get_base_price(self):
         '''This method determines if it is rush hour and combines 
@@ -114,4 +120,4 @@ class GovernmentMelonOrder(AbstractMelonOrder):
         self.passed_inspection = passed
 
 if __name__ == '__main__':
-    test_order = DomesticMelonOrder('crenshaw', 4)
+    test_order = DomesticMelonOrder('crenshaw', 10)
