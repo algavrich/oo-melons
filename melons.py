@@ -1,7 +1,7 @@
 """Classes for melon orders."""
 
 import random
-from datetime import datetime
+from datetime import datetime 
 
 class TooManyMelonsError(ValueError):
     pass
@@ -119,5 +119,5 @@ class GovernmentMelonOrder(AbstractMelonOrder):
 
         self.passed_inspection = passed
 
-if __name__ == '__main__':
-    test_order = DomesticMelonOrder('crenshaw', 10)
+# if __name__ == '__main__':
+#     test_order = DomesticMelonOrder('crenshaw', 10)
